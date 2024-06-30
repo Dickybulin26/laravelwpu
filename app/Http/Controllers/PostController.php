@@ -11,17 +11,17 @@ class PostController extends Controller
     {
         return view('blog',[
             'title' => 'Blog',
-            'posts' => Post::ambilData(),
+            'posts' => Post::all(),
         ]);
     }
 
-    public function show($slug){
+    public function show(Post $post){
         /**
          ** menampilkan single post
          */
         return view('post',[
             'title' => 'Single Post',
-            'post' => Post::cari($slug),
+            'post' => $post
         ]);
     }
 }
