@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\PostController;
-use App\Models\Post;
-use Illuminate\Support\Facades\Route;
 use App\Models\Category;
-use App\Models\User;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,19 +48,11 @@ Route::get('/categories', function () {
     ]);
 });
 
-// Route::get('/categories/{category:slug}', function (Category $category) {
-//     return view('blog', [
-//         'title' => "Post by category : $category->name",
-//         'active' => 'categories',
-//         'posts' => $category->posts->load('category','author'),
-//     ]);
-// });
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'auth']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
 
-// Route::get('/authors/{Author:username}', function (User $Author) {
-//     return view('blog', [
-//         'title' => "User by Athors : $Author->name",
-//         'active' => 'posts',
-//         'posts' => $Author->posts->load('category', 'author'),
-//     ]);
-// });
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
