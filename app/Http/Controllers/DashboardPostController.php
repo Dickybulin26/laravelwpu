@@ -14,7 +14,7 @@ class DashboardPostController extends Controller
     {
         // return dd(Post::where('user_id', auth()->user()->id)->get());
 
-        return Post::all();
+        // return Post::all();
 
         return view('dashboard.blog.index', [
             'posts' => Post::where('user_id', auth()->user()->id)->get(),
@@ -40,13 +40,12 @@ class DashboardPostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(string $slug)
     {
-        // return view('dashboard.blog.show', [
-        //     'post' => $post
-        // ]);
-        
-        dd($post);
+        $post = Post::where('slug', $slug)->first();
+        return view('dashboard.blog.show', [
+            'post' => $post
+        ]);
     }
 
     /**
