@@ -9,6 +9,7 @@
 </div>
 
 <div class="table-responsive small col-lg-8">
+  <a href="/dashboard/blog/create" class="btn btn-primary mb-3"><i class="bi bi-plus-lg"></i> Add New Post</a>
     <table class="table table-striped table-sm">
       <thead>
         <tr>
