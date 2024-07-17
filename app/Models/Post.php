@@ -14,7 +14,7 @@ class Post extends Model
     use Sluggable;
 
     protected $guarded = ['id'];
-    protected $fillable = ['author','category', 'slug'];
+    // protected $fillable = ['author','category', 'slug', 'title', 'excerpt', 'body'];
 
     public function scopeFilter($query, array $filters)
     {

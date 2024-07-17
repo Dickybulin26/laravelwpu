@@ -22,7 +22,7 @@
 
       <hr class="my-3">
 
-      <ul class="nav flex-column mb-auto">
+      <ul class="nav flex-column" style="height: 100vh">
         <li class="nav-item">
             <form action="/logout" method="post">
                 @csrf
